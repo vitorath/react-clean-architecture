@@ -35,6 +35,18 @@
     }
   }
 
+  .submit {
+    &:disabled {
+      background-color: $disabledBackground;
+      color: $disabledColor;
+      cursor: not-allowed;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
   .link {
     text-align: center;
     
