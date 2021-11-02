@@ -72,24 +72,6 @@ body {
     button {
       margin-top: 24px;
     }
-    
-    .inputWrap {
-      display: flex;
-      align-items: center;
-      position: relative;
-      
-      input {
-       flex-grow: 1;
-      }
-
-      .status {
-        position: absolute;
-        right: 8px;
-
-        font-size: 16px;
-        color: $primaryDark
-      }
-    }
   }
 
   .link {
