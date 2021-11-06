@@ -4,14 +4,11 @@ import Styles from './form-status-styles.scss'
 import FormContext from '@/presentation/contexts/form/form-context'
 
 const FormStatus: React.FC = () => {
-  const { state, errorState } = React.useContext(FormContext)
-
+  const { state } = React.useContext(FormContext)
   return (
     <div data-testid="error-wrap" className={Styles.errorWrap}>
       {state.isLoading && <Spinner className={Styles.spinner} /> }
-      {state.errorMessage && (
-        <span className={Styles.error}>{errorState.main}</span>
-      )}
+      {state.mainError && <span className={Styles.error}>{state.mainError}</span>}
     </div>
   )
 }
