@@ -5,6 +5,7 @@ import { LoginHeader, Footer, Input, FormStatus } from '@/presentation/component
 import FormContext from '@/presentation/contexts/form/form-context'
 import { Validation } from '@/presentation/protocols/validation'
 import { Authentication } from '@/domain/usecases'
+import { Link } from 'react-router-dom'
 
 type Props = {
   validation: Validation
@@ -65,7 +66,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
           >
             Enviar
         </button>
-        <a className={Styles.link}>Criar contar</a>
+        <Link data-testid="sign-up" to="/sign-up" className={Styles.link}>Criar contar</Link>
         <FormStatus />
       </form>
       </FormContext.Provider>
