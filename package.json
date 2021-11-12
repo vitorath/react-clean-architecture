@@ -1,7 +1,9 @@
 {
   "name": "clean-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "React Application using TDD, Clean Architecture and Typescript",
+  "author": "Vitor A Thomazini",
+  "license": "ISC",
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
@@ -18,8 +20,6 @@
     ]
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@testing-library/react": "^12.1.2",
     "@types/axios": "^0.14.0",
