@@ -6,17 +6,25 @@ import { LoginHeader, Footer, Input, FormStatus } from '@/presentation/component
 import FormContext from '@/presentation/contexts/form/form-context'
 
 const SignUp: React.FC = () => {
+  const [state] = React.useState({
+    isLoading: false,
+    nameError: 'Campo obrigatório',
+    emailError: 'Campo obrigatório',
+    passwordError: 'Campo obrigatório',
+    passwordConfirmationError: 'Campo obrigatório',
+    mainError: ''
+  })
   return (
     <div className={Styles.signup}>
       <LoginHeader />
-      <FormContext.Provider value={{ state: {} }}>
+      <FormContext.Provider value={{ state }}>
       <form className={Styles.form}>
         <h2>Criar Conta</h2>
         <Input type="text" name="name" placeholder="Digite seu nome" />
         <Input type="email" name="email" placeholder="Digite seu e-mail" />
         <Input type="password" name="password" placeholder="Digite sua senha" />
         <Input type="password" name="passwordConfirmation" placeholder="Repita sua senha" />
-        <button className={Styles.submit} type="submit">Enviar</button>
+        <button data-testid="submit" className={Styles.submit} disabled type="submit">Enviar</button>
         <Link to="/login" className={Styles.link}>Voltar Para Login</Link>
         <FormStatus />
       </form>
