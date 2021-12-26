@@ -10,10 +10,15 @@ const Input: React.FC<Props> = (props: Props) => {
   const errorMessage = state[`${props.name}Error`]
 
   return (
-    <div className={Styles.inputWrap}>
+    <div
+      data-testid={`${props.name}-wrap`}
+      className={Styles.inputWrap}
+      data-status={errorMessage ? 'invalid' : 'valid'}
+    >
       <input
         {...props}
         ref={inputRef}
+        title={errorMessage}
         placeholder=" "
         data-testid={props.name}
         readOnly
@@ -21,16 +26,12 @@ const Input: React.FC<Props> = (props: Props) => {
         onChange={(e) => { setState({ ...state, [e.target.name]: e.target.value }) }}
       />
       <label
-        onClick={() => inputRef.current.focus()}>
+        data-testid={`${props.name}-label`}
+        title={errorMessage}
+        onClick={() => inputRef.current.focus()}
+      >
         {props.placeholder}
       </label>
-      <span
-        data-testid={`${props.name}-status`}
-        title={errorMessage || 'Tudo certo!'}
-        className={Styles.status}
-      >
-        {errorMessage ? '🔴' : '🟢'}
-      </span>
     </div>
   )
 }
