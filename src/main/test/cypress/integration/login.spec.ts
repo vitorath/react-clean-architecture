@@ -98,6 +98,19 @@ describe('Login', () => {
     cy.window().then(window => assert.isOk(window.localStorage.getItem('accessToken')))
   })
 
+  it('Should present multiple submits', () => {
+    cy.intercept(loginServerStub, {
+      statusCode: 200,
+      body: {
+        accessToken: faker.datatype.uuid()
+      }
+    }).as('request')
+    cy.getByTestId('email').focus().type(faker.internet.email())
+    cy.getByTestId('password').focus().type(faker.random.alphaNumeric(5))
+    cy.getByTestId('submit').dblclick()
+    cy.get('@request.all').should('have.length', 1)
+  })
+
   it('Should present UnexpectedError if invalid data is returned', () => {
     cy.intercept(loginServerStub, {
       statusCode: 200,
